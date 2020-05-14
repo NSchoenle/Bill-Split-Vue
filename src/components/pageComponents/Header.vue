@@ -1,33 +1,19 @@
 <template>
   <div id="appTitle">
-     <h1 >{{ msg }}</h1>
+    <h1>{{ msg }}</h1>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          
-          <table class=" alert-warning center">
-            <tr>
-              <td>
-                <a class="nav-item nav-link active" @click="pageNavigation('party')">Party</a>
-              </td>
-          
-              <td>
-                <a class="nav-item nav-link" @click="pageNavigation('bill')">Create Bill</a>
-              </td>
-            
-              <td>
-                <a class="nav-item nav-link" @click="pageNavigation('master')">Split It</a>
-              </td>
-            </tr>
-          </table>
-        
-       
-
-        </div>
+    <div id='nav' class="row">
+      <div class="col">
+        <a class="nav-item nav-link active" @click="pageNavigation('party')">Party</a>
       </div>
-    </nav>
+      <div class="col">
+        <a class="nav-item nav-link" @click="pageNavigation('bill')">Create Bill</a>
+      </div>
+      <div class="col">
+        <a class="nav-item nav-link" @click="pageNavigation('master')">Split It</a>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -63,16 +49,18 @@ export default {
   text-align: center;
   padding: 10px;
 }
-
-table.center{
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-th, td {
-  padding: 15px;
-  text-align: right;
+#nav{
   vertical-align: center;
+  text-align: center;
+  background-color: #fff3cd;
+  border-radius: 5px;
+  padding: 1%;
 }
+a{
+  cursor: pointer;
+  color: #a6863e;
+}
+
+
+
 </style>
