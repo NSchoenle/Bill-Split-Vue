@@ -8,7 +8,18 @@
 
         <div>
           <ul class="list-group">
-            <li class="list-group-item list-group" v-for="(person, ind) in this.party" :key="ind">{{person}}</li>
+            <li class="list-group-item list-group" v-for="(person, ind) in this.party" :key="ind">
+              <div class="row">
+                <div class="col-6">
+                  <p>{{person}}</p>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-secondary btn-sm" @click="editPerson(person)">Edit</button>
+                  <button class="btn btn-danger btn-sm" @click="deletePerson(ind)">Delete</button>
+                </div>
+                
+              </div>
+            </li>
           </ul>
 
 
@@ -56,12 +67,21 @@ export default {
   },
   methods: {
     addPersonToParty(){
-      console.log('dispatching');
       this.$store.dispatch('addPerson', this.currentPersonName);
-      console.log('dispatched');
       this.partyFormOpen = false;
       this.currentPersonName = '';
     },
+    editPerson(person){
+      this.currentPersonName = person;
+      this.$store.dispatch('deletePerson', this.currentPersonName);
+    },
+    deletePerson(id){
+
+    },
+
+
+
+
     advanceToBillForm(){
       this.$store.dispatch('goToBillFormView');
     }
