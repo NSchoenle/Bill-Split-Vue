@@ -15,6 +15,12 @@ const mutations = {
   'ADD_ITEM'(state, item){
     state.billItems.push(item);
   },
+  'UPDATE_TAX' (state, tax){
+    state.taxPerc = tax;
+  },
+  'UPDATE_TIP' (state, tip){
+    state.tipPerc = tip;
+  },
   'ADD_PERSON' (state, person){
     // person = person.toLowerCase();
     if (!state.party.includes(person)){
@@ -28,12 +34,14 @@ const mutations = {
     }
     console.log(state.party);
   },
-  'UPDATE_TAX' (state, tax){
-    state.taxPerc = tax;
+  'EDIT_PERSON' (state, person){
+   //TODO: Add Code to update person's name 
+   console.log(`Editing ${person}`);
   },
-  'UPDATE_TIP' (state, tip){
-    state.tipPerc = tip;
-  }
+  'DELETE_PERSON'(state, person){
+    //TODO: Add code to remove person from list and clear their assignments
+    console.log(`Deleting ${person}`);
+  },
 };
 
 const actions = {
@@ -44,22 +52,26 @@ const actions = {
       // context.commit('SET_BILL', dummy_data); //Set up the bill with some starter dummy data for testing
     
     },
-  addPerson: (context, person) =>{
-      // console.log(`adding ${person} to party`);
-      context.commit('ADD_PERSON', person);
-      // console.log(`added ${person} to party`);
-  },
-  updateTaxPerc: (context, taxPerc) =>{
-    context.commit('UPDATE_TAX', taxPerc);
-  },
-  updateTipPerc: (context, tipPerc) =>{
-    if (tipPerc >0){
-      context.commit('UPDATE_TIP', tipPerc);
-    }else{
-      context.commit('UPDATE_TIP', 0);
-    }
-  }
- 
+    updateTaxPerc: (context, taxPerc) =>{
+      context.commit('UPDATE_TAX', taxPerc);
+    },
+    updateTipPerc: (context, tipPerc) =>{
+      if (tipPerc >0){
+        context.commit('UPDATE_TIP', tipPerc);
+      }else{
+        context.commit('UPDATE_TIP', 0);
+      }
+    },
+    
+    addPerson: (context, person) =>{
+        context.commit('ADD_PERSON', person);
+    },
+    updatePerson: (context, person) => {
+      context.commit('UPDATE_PERSON', person);
+    },
+    deletePerson: (context, person) =>{
+      context.commit(context, person);
+    },
 };
 
 const getters = {
